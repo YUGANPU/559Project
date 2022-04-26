@@ -4,8 +4,9 @@ I love cheng cheng
 
 ## For Features:
 
-1. Calculate Discriminate Power of each feature
-2. Implement PCA. Observe the relation to Discriminate Power
+1. Feature Binarization
+2. Calculate Discriminate Power of each feature
+3. Implement PCA. Observe the relation to Discriminate Power
 
 
 ## Reference System:
