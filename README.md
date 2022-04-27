@@ -12,10 +12,10 @@ I love cheng cheng
 ## For Training and Prediction:
 ### Regression:
 - [ ] SVR
-- [ ] Knn
+- [ ] Knn   --Cheng
 
 ### Classification:
-- [ ] RBF NN
+- [ ] RBF NN    --Huai
 - [ ] Random Forest
 - [ ] KMeans
 
