@@ -23,7 +23,7 @@ def binary(df):
                   'nursery', 'higher', 'internet', 'romantic']
     for col in ColumnList:
         df[col] = df[col].map(binaryMap)
-    print(df)
+    return df
 
 if __name__ == "__main__":
     DataTrain = pd.read_csv("./student_performance_train.csv")
