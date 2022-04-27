@@ -1,6 +1,5 @@
 This is a Frame
 
-I love cheng cheng
 
 ## For Features:
 
