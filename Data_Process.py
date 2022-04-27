@@ -25,10 +25,29 @@ def binary(df):
         df[col] = df[col].map(binaryMap)
     return df
 
+def Convert2Label(df):
+    # Convert Origin G1 G2 G3 col to class format
+    def classify(x):
+        if 0<=x<=9:
+            return 5
+        elif 10<=x<=11:
+            return 4
+        elif 13<=x<=12:
+            return 3
+        elif 14<=x<=15:
+            return 2
+        else:
+            return 1
+    df_Processed = df.copy(deep=True)
+    ColumnList = ["G1", "G2", "G3"]
+    for col in ColumnList:
+        df_Processed[col] = df_Processed[col].apply(classify)
+    return df_Processed
+
 if __name__ == "__main__":
     DataTrain = pd.read_csv("./student_performance_train.csv")
     DataTest = pd.read_csv("./student_performance_test.csv")
     binary(DataTrain)
     binary(DataTest)
-
-    print(0)
+    DataTrain_Label = Convert2Label(DataTrain)
+    DataTest_Label = Convert2Label(DataTest)
