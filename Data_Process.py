@@ -25,21 +25,24 @@ def binary(df):
         df[col] = df[col].map(binaryMap)
     return df
 
-def Convert2Label(df):
+def Convert2Label(df, head=None):
     # Convert Origin G1 G2 G3 col to class format
+    if head is None:
+        head = ["G1", "G2", "G3"]
+
     def classify(x):
         if 0<=x<=9:
-            return 5
-        elif 10<=x<=11:
             return 4
-        elif 13<=x<=12:
+        elif 10<=x<=11:
             return 3
-        elif 14<=x<=15:
+        elif 13<=x<=12:
             return 2
-        else:
+        elif 14<=x<=15:
             return 1
+        else:
+            return 0
     df_Processed = df.copy(deep=True)
-    ColumnList = ["G1", "G2", "G3"]
+    ColumnList = head
     for col in ColumnList:
         df_Processed[col] = df_Processed[col].apply(classify)
     return df_Processed
