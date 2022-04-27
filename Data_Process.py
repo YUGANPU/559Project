@@ -32,7 +32,7 @@ def Convert2Label(df):
             return 5
         elif 10<=x<=11:
             return 4
-        elif 13<=x<=12:
+        elif 12<=x<=13:
             return 3
         elif 14<=x<=15:
             return 2
@@ -51,3 +51,5 @@ if __name__ == "__main__":
     binary(DataTest)
     DataTrain_Label = Convert2Label(DataTrain)
     DataTest_Label = Convert2Label(DataTest)
+    print(DataTrain_Label)
+
