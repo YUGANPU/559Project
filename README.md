@@ -17,6 +17,7 @@ I love cheng cheng
 ### Classification:
 - [ ] RBF NN
 - [ ] Random Forest
+- [ ] KMeans
 
 ## Reference System:
 ### Regression:
