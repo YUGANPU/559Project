@@ -9,6 +9,15 @@ I love cheng cheng
 3. Implement PCA. Observe the relation to Discriminate Power
 
 
+## For Training and Prediction:
+### Regression:
+- [ ] SVR
+- [ ] Knn
+
+### Classification:
+- [ ] RBF NN
+- [ ] Random Forest
+
 ## Reference System:
 ### Regression:
 - [ ] Trivial System
