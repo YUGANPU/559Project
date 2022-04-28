@@ -35,7 +35,7 @@ def Convert2Label(df, head=None):
             return 4
         elif 10<=x<=11:
             return 3
-        elif 13<=x<=12:
+        elif 12<=x<=13:
             return 2
         elif 14<=x<=15:
             return 1
