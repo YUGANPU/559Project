@@ -29,7 +29,7 @@ if __name__=="__main__":
 
     transfer = StandardScaler()
     TrainSet_feature = transfer.fit_transform(TrainSet_feature)
-    TestSet_feature = transfer.fit_transform(TestSet_feature)
+    TestSet_feature = transfer.transform(TestSet_feature)
 
     regressor = SVR(kernel='rbf')
     regressor.fit(TrainSet_feature,TrainSet_label)
