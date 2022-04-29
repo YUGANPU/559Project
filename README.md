@@ -1,5 +1,5 @@
 This is a Frame
-
+I love Huai Huai
 
 ## For Features:
 
@@ -10,7 +10,7 @@ This is a Frame
 
 ## For Training and Prediction:
 ### Regression:
-- [ ] SVR
+- [ ] SVR   --Cheng
 - [ ] Knn   --Cheng
 
 ### Classification:
