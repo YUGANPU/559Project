@@ -12,6 +12,7 @@ I love Huai Huai
 ### Regression:
 - [ ] SVR   --Cheng
 - [ ] Knn   --Cheng
+- [ ] 1nn   --Cheng
 
 ### Classification:
 - [ ] RBF NN    --Huai
