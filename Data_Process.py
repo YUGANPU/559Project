@@ -68,13 +68,16 @@ def standardize(data):
     data_processed = transform.fit_transform(data_processed)
     return data_processed
 
-def process(data, onehot=True, labels=None):
+def process(data, onehot=True, labels=False):
     df_binary = binary(data)
     if onehot:
         df_onehot = convert2onehot(df_binary)
     else:
         df_onehot = df_binary
-    df_result = Convert2Label(df_onehot, labels)
+    if labels:
+        df_result = Convert2Label(df_onehot, labels)
+    else:
+        df_result = df_onehot
     return df_result
 
 if __name__ == "__main__":
