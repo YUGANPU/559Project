@@ -6,9 +6,6 @@ import pandas as pd
 # address: R:0, U:1
 # famsize: LE3:0, GT3:1
 # Pstatus: T:0, A:1
-# Mjob&Fjob: servives:1, at_home:2, health:3, teacher:4, other:0
-# reason: home:1, reputation:2, course:3, other: 0
-# guardian: mother:1, father:2, other: 0
 # schoolsup, famsup, paid, activites, nursery, highter, internet, romantic:
 # yes: 1, no: 0
 
