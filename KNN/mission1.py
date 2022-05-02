@@ -19,10 +19,8 @@ if __name__ == "__main__":
     DataTest = pd.read_csv("../student_performance_test.csv")
     Data_Process.binary(DataTrain)
     Data_Process.binary(DataTest)
-    # 按等级转化
     # DataTrain_Label = Data_Process.Convert2Label(DataTrain)
     # DataTest_Label = Data_Process.Convert2Label(DataTest)
-    # 不按等级转化
     DataTrain_Label = DataTrain
     DataTest_Label = DataTest
 
