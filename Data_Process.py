@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
 # Logistic:
 # school: MS:0, GP:1
@@ -15,36 +16,69 @@ binaryMap = {"MS":0, "GP":1, "F":0, "M":1, "R":0, "U":1, "LE3":0, "GT3":1, "T":0
              "home":1, "reputation":2, "course":3, "mother":1, "father":2, "yes": 1, "no":0}
 
 def binary(df):
-    ColumnList = ['school','sex','address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
-                  'reason', 'guardian', 'schoolsup', 'famsup', 'paid', 'activities',
+    dfcopy = df.copy(deep=True)
+    ColumnList = ['school','sex','address', 'famsize', 'Pstatus',
+                  'schoolsup', 'famsup', 'paid', 'activities',
                   'nursery', 'higher', 'internet', 'romantic']
     for col in ColumnList:
-        df[col] = df[col].map(binaryMap)
-    return df
+        dfcopy[col] = dfcopy[col].map(binaryMap)
+    return dfcopy
 
-def Convert2Label(df):
+def convert2onehot(df):
+    features_list = ['school', 'sex', 'age', 'address', 'famsize', 'Pstatus', 'Medu', 'Fedu',
+                   'Mjob', 'Fjob', 'reason', 'guardian', 'traveltime', 'studytime',
+                   'failures', 'schoolsup', 'famsup', 'paid', 'activities', 'nursery',
+                   'higher', 'internet', 'romantic', 'famrel', 'freetime', 'goout', 'Dalc',
+                   'Walc', 'health', 'absences']
+    label_list = ['G1', 'G2', 'G3']
+    df_train = df[features_list]
+    df_label = df[label_list]
+    df_one_hot = pd.get_dummies(df_train)
+    df_result = pd.concat([df_one_hot, df_label], axis=1)
+    return df_result
+
+def Convert2Label(df, head=None):
     # Convert Origin G1 G2 G3 col to class format
+    if head is None:
+        head = ["G1", "G2", "G3"]
+
     def classify(x):
         if 0<=x<=9:
-            return 5
-        elif 10<=x<=11:
             return 4
-        elif 13<=x<=12:
+        elif 10<=x<=11:
             return 3
-        elif 14<=x<=15:
+        elif 12<=x<=13:
             return 2
-        else:
+        elif 14<=x<=15:
             return 1
+        else:
+            return 0
     df_Processed = df.copy(deep=True)
-    ColumnList = ["G1", "G2", "G3"]
+    ColumnList = head
     for col in ColumnList:
         df_Processed[col] = df_Processed[col].apply(classify)
     return df_Processed
 
+def standardize(data):
+    data_processed = data.copy()
+    transform = StandardScaler()
+    data_processed = transform.fit_transform(data_processed)
+    return data_processed
+
+def process(data, onehot=True, labels=False):
+    df_binary = binary(data)
+    if onehot:
+        df_onehot = convert2onehot(df_binary)
+    else:
+        df_onehot = df_binary
+    if labels:
+        df_result = Convert2Label(df_onehot, labels)
+    else:
+        df_result = df_onehot
+    return df_result
+
 if __name__ == "__main__":
     DataTrain = pd.read_csv("./student_performance_train.csv")
     DataTest = pd.read_csv("./student_performance_test.csv")
-    binary(DataTrain)
-    binary(DataTest)
-    DataTrain_Label = Convert2Label(DataTrain)
-    DataTest_Label = Convert2Label(DataTest)
+    result = process(DataTrain)
+    print(0)
