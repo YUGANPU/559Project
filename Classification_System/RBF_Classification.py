@@ -114,8 +114,8 @@ def kmeans(data):
 
 
 if __name__ == "__main__":
-    DataTrain = pd.read_csv("./student_performance_train.csv")
-    DataTest = pd.read_csv("./student_performance_test.csv")
+    DataTrain = pd.read_csv("../student_performance_train.csv")
+    DataTest = pd.read_csv("../student_performance_test.csv")
     DataTrain = Data_Process.binary(DataTrain)
     DataTrain = Data_Process.Convert2Label(DataTrain)
     DataTrain = DataTrain.values

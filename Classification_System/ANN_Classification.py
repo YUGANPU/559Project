@@ -96,11 +96,6 @@ def fit(train_loader, test_loader):
     display(train_acc, test_acc)
 
 
-def kmeans(data):
-    process_data = KMeans(n_clusters=5, random_state=10).fit(data)
-    centroids = process_data.cluster_centers_
-    return centroids
-
 def display(train_acc,test_acc):
     fig,ax=plt.subplots()
     ax.plot(range(1,len(train_acc)+1),train_acc,color='r',label='train_acc')
@@ -110,8 +105,8 @@ def display(train_acc,test_acc):
 
 
 if __name__ == "__main__":
-    DataTrain = pd.read_csv("./student_performance_train.csv")
-    DataTest = pd.read_csv("./student_performance_test.csv")
+    DataTrain = pd.read_csv("../student_performance_train.csv")
+    DataTest = pd.read_csv("../student_performance_test.csv")
     DataTrain, DataTest = Data_Process.binary(DataTrain), Data_Process.binary(DataTest)
     DataTrain, DataTest = Data_Process.Convert2Label(DataTrain), Data_Process.Convert2Label(DataTest)
     DataTrain, DataTest = DataTrain.values, DataTest.values
@@ -123,6 +118,3 @@ if __name__ == "__main__":
     train_loader = load_data(feature_train, label_train)
     test_loader = load_data(feature_test, label_test, batch_size=len(test_set))
     fit(train_loader, test_loader)
-    # get centroids of training features
-    centroid = kmeans(feature_train)
-    print(0)

@@ -1,5 +1,6 @@
 This is a Frame
 I love Huai Huai
+I love Cheng Cheng
 
 ## For Features:
 
@@ -16,8 +17,8 @@ I love Huai Huai
 
 ### Classification:
 - [ ] RBF NN    --Huai
-- [ ] Random Forest
-- [ ] KMeans
+- [x] Xgboost
+- [ ] ANN
 
 ## Reference System:
 ### Regression:
@@ -27,10 +28,10 @@ I love Huai Huai
     - 1NN (output value is the same as the nearest training-set data point in feature space)
     - Linear Regression (no regularization)
 ### Classification:
-- [ ] Trivial System
+- [x] Trivial System
     - A system that randomly outputs class labels with probability based on class priors 
     (priors calculated from the training set). Run the trivial system at least 10 times and take 
     the average of the results (accuracy or macro f1-score) as the 
     final performance of the trivial system.
-- [ ] Baseline System
+- [x] Baseline System
     - Nearest Means
