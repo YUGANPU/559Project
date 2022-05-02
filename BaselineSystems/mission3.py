@@ -22,13 +22,13 @@ if __name__ == "__main__":
     TrainSet = DataTrain.values
     tmp = np.array([0, 1, 2, 3, 4, 5, 6, 7,
                     12, 13, 14, 15, 16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25, 26, 27, 28, 29])
+                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31])
     TrainSet_feature = TrainSet[:, tmp]
-    TrainSet_label = TrainSet[:, -3]
+    TrainSet_label = TrainSet[:, -1]
 
     TestSet = DataTest.values
     TestSet_feature = TestSet[:, tmp]
-    TestSet_label = TestSet[:, -3]
+    TestSet_label = TestSet[:, -1]
 
     estimator = KNeighborsRegressor(n_neighbors=1)
     estimator.fit(TrainSet_feature,TrainSet_label)
