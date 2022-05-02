@@ -38,7 +38,7 @@ if __name__ == "__main__":
     #tmp = np.array([12, 13, 14,17])
     #tmp = np.array([9])
 
-    TrainSet_feature = TrainSet[:,tmp]
+    TrainSet_feature = TrainSet[:, tmp]
     TrainSet_label = TrainSet[:, -3]
 
     TestSet = DataTest_Label.values

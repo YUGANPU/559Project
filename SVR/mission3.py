@@ -18,13 +18,17 @@ if __name__=="__main__":
     DataTrain_Label = DataTrain
     DataTest_Label = DataTest
 
+    tmp = np.array([0, 1, 3, 4, 5, 6, 7, 8, 10,
+                    12, 13, 14, 15, 17, 18, 19, 20,
+                    21, 22, 27, 29, 30, 31])
+
     TrainSet = DataTrain_Label.values
-    TrainSet_feature = TrainSet[:, :-1]
+    TrainSet_feature = TrainSet[:, tmp]
     TrainSet_label = TrainSet[:, -1]
 
 
     TestSet = DataTest_Label.values
-    TestSet_feature = TestSet[:, :-1]
+    TestSet_feature = TestSet[:, tmp]
     TestSet_label = TestSet[:, -1]
 
     transfer = StandardScaler()
