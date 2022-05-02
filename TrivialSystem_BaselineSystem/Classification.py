@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import Data_Process
+from collections import Counter
+from random import random
 
 class Baseline:
     def train(self, features, labels):
@@ -30,20 +32,53 @@ class Baseline:
         print("Accuracy for Nearest Mean is", (correct/labels.shape[0])*100, "%")
         return self.predict
 
-
-
     def euclidean_distance(self, x1, x2):
         return np.linalg.norm(x1 - x2, ord=2)
 
 
+class Trivial:
+    def get_prob(self, label_train):
+        c = Counter(label_train)
+        result = []
+        for i in range(5):
+            prob = c[i]/len(label_train)
+            result.append(prob)
+        self.prob_list = result
+        return result
+
+    def generate_wp(self):
+        rnd = random()
+        prob = 0
+        for i in range(5):
+            prob+=self.prob_list[i]
+            if rnd <= prob:
+                return i
+
+    def test(self, label_test):
+        predict_result = []
+        for i in range(len(label_test)):
+            temp = self.generate_wp()
+            predict_result.append(temp)
+        correct = np.count_nonzero(predict_result == label_test)
+        self.predict = predict_result
+        #print("Accuracy for Probability output is", (correct/label_test.shape[0])*100, "%")
+        return (correct/label_test.shape[0])*100
+
+    def testTimes(self, label_test, times):
+        sum = 0
+        for i in range(times):
+            sum+=self.test(label_test)
+        return sum/times
 
 
 if __name__ == "__main__":
     ## For Mission 1
     DataTrain = pd.read_csv("../student_performance_train.csv")
     DataTest = pd.read_csv("../student_performance_test.csv")
-    DataTrain, DataTest = Data_Process.binary(DataTrain), Data_Process.binary(DataTest)
-    DataTrain, DataTest = Data_Process.Convert2Label(DataTrain), Data_Process.Convert2Label(DataTest)
+    DataTrain = Data_Process.process(DataTrain, onehot=False, labels=['G1', 'G2', 'G3'])
+    DataTest = Data_Process.process(DataTest, onehot=False, labels=['G1', 'G2', 'G3'])
+    four_Cate = ['Mjob', 'Fjob', 'reason', 'guardian']
+    DataTrain, DataTest = DataTrain.drop(four_Cate, axis=1), DataTest.drop(four_Cate, axis=1)
     DataTrain, DataTest = DataTrain.values, DataTest.values
     train_set, test_set = DataTrain[:, :-2], DataTest[:, :-2]
     feature_train, label_train = train_set[:, :-1], train_set[:, -1]
@@ -52,4 +87,8 @@ if __name__ == "__main__":
     baseline = Baseline()
     mean = baseline.train(feature_train, label_train)
     baseline.test(feature_test, label_test)
+    ## Trivial
+    trivial = Trivial()
+    prob_list = trivial.get_prob(label_train)
+    res = trivial.testTimes(label_test, 10)
     print(0)
