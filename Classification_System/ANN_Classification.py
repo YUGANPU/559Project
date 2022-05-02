@@ -110,8 +110,8 @@ def display(train_acc,test_acc):
 
 
 if __name__ == "__main__":
-    DataTrain = pd.read_csv("./student_performance_train.csv")
-    DataTest = pd.read_csv("./student_performance_test.csv")
+    DataTrain = pd.read_csv("../student_performance_train.csv")
+    DataTest = pd.read_csv("../student_performance_test.csv")
     DataTrain, DataTest = Data_Process.binary(DataTrain), Data_Process.binary(DataTest)
     DataTrain, DataTest = Data_Process.Convert2Label(DataTrain), Data_Process.Convert2Label(DataTest)
     DataTrain, DataTest = DataTrain.values, DataTest.values
