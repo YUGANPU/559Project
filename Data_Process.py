@@ -1,5 +1,8 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # Logistic:
 # school: MS:0, GP:1
@@ -76,6 +79,13 @@ def process(data, onehot=True, labels=False):
     else:
         df_result = df_onehot
     return df_result
+
+def confusionMatrix(ture_label, pred_label, classes, title):
+    cm = confusion_matrix(ture_label, pred_label)
+    cm_plot = ConfusionMatrixDisplay(cm, display_labels=classes).plot()
+    plt.title(title)
+    plt.show()
+
 
 if __name__ == "__main__":
     DataTrain = pd.read_csv("./student_performance_train.csv")
