@@ -17,8 +17,8 @@ I love Cheng Cheng
 
 ### Classification:
 - [ ] RBF NN    --Huai
-- [x] Xgboost
-- [ ] ANN
+- [x] Xgboost   --Huai
+- [x] ANN       --Huai
 
 ## Reference System:
 ### Regression:
@@ -27,7 +27,7 @@ I love Cheng Cheng
 - [ ] Baseline System
     - 1NN (output value is the same as the nearest training-set data point in feature space)
     - Linear Regression (no regularization)
-### Classification:
+### Classification: --Huai
 - [x] Trivial System
     - A system that randomly outputs class labels with probability based on class priors 
     (priors calculated from the training set). Run the trivial system at least 10 times and take 
