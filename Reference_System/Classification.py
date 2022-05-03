@@ -34,9 +34,10 @@ class Baseline:
                 distance.append(temp_distance)
             pred_label = distance.index(min(distance))
             self.predict[i] = int(pred_label)
-        acc = (pred_label == self.y_test)
+        acc = (self.predict == self.y_test)
         correct = np.count_nonzero(acc)
         print(self.title, ": \n| Accuracy for Nearest Mean is", (correct/self.y_test.shape[0])*100, "%")
+        Data_Process.confusionMatrix(self.y_test, self.predict,['1', '2', '3', '4', '5'], self.title)
         return self.predict
 
     def euclidean_distance(self, x1, x2):
@@ -96,11 +97,11 @@ if __name__ == "__main__":
     feature_train, label_train = train_set[:, :-1], train_set[:, -1]
     feature_test, label_test = test_set[:, :-1], test_set[:, -1]
     # Baseline
-    baseline1 = Baseline(feature_train, label_train, feature_test, label_test, title="Mission_1")
+    baseline1 = Baseline(feature_train, label_train, feature_test, label_test, title="Mission_1_base")
     mean = baseline1.train()
     baseline1.test()
     # Trivial
-    trivial1 = Trivial(feature_train, label_train, feature_test, label_test, title="Mission_1")
+    trivial1 = Trivial(feature_train, label_train, feature_test, label_test, title="Mission_1_trivial")
     res = trivial1.testTimes(10)
     print("\n\n")
 
@@ -108,11 +109,11 @@ if __name__ == "__main__":
     feature_train2, label_train2 = feature_train, DataTrain[:, -1]
     feature_test2, label_test2 = feature_test, DataTest[:, -1]
     # Baseline
-    baseline2 = Baseline(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2")
+    baseline2 = Baseline(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2_base")
     baseline2.train()
     baseline2.test()
     # Trivial
-    trivial2 = Trivial(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2")
+    trivial2 = Trivial(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2_trivial")
     trivial2.testTimes(10)
     print("\n\n")
 
@@ -129,9 +130,9 @@ if __name__ == "__main__":
     # transfer = StandardScaler()
     # feature_train3 = transfer.fit_transform(feature_train3)
     # feature_test3 = transfer.transform(feature_test3)
-    baseline3 = Baseline(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3")
+    baseline3 = Baseline(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3_base")
     baseline3.train()
     baseline3.test()
     # Trivial
-    trivial3 = Trivial(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3")
+    trivial3 = Trivial(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3_trivial")
     trivial3.testTimes(10)
