@@ -22,9 +22,9 @@ I love Cheng Cheng
 
 ## Reference System:
 ### Regression:
-- [ ] Trivial System
+- [x] Trivial System
     - A system that always outputs the mean output value 𝑦< from the training set.
-- [ ] Baseline System
+- [x] Baseline System
     - 1NN (output value is the same as the nearest training-set data point in feature space)
     - Linear Regression (no regularization)
 ### Classification: --Huai

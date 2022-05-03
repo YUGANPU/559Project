@@ -33,13 +33,13 @@ class ANNet(nn.Module):
         super(ANNet, self).__init__()
         self.out_features = out_features
         self.in_features = in_features
-        self.fc1 = nn.Linear(in_features, 5)
-        #self.fc2 = nn.Linear(in_features, 5)
+        self.fc1 = nn.Linear(in_features, 70)
+        self.fc2 = nn.Linear(70, 5)
         #self.fc3 = nn.Linear(30, 5)
 
     def forward(self, inputs):
         x = F.relu(self.fc1(inputs))
-        #x = F.relu(self.fc2(x))
+        x = F.relu(self.fc2(x))
         #x = F.relu(self.fc3(x))
         # x = F.softmax(x)
         return x
