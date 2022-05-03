@@ -17,6 +17,7 @@ class xgbset():
         self.x_test = x_test
         self.y_test = y_test
         self.title = title
+        print("==>", self.title)
 
     def model_selection(self):
         print("=========>Model Selection<=========")
@@ -40,8 +41,7 @@ class xgbset():
         bestacc = ms.best_score_
         bestpara = ms.best_params_
         self.best_params = ms.best_params_
-        print("==>", self.title,
-              ": \n| best acc for train is", bestacc,
+        print(": \n| best acc for train is", bestacc,
               "| best parameters for validation is", bestpara)
 
     def test(self):
@@ -62,6 +62,7 @@ class xgbset():
         self.train_f1 = f1_score(self.y_train, train_pred, average='macro')
         self.test_acc = accuracy_score(self.y_test, test_pred)
         self.test_f1 = f1_score(self.y_test, test_pred, average='macro')
+        Data_Process.confusionMatrix(self.y_test, test_pred,['1', '2', '3', '4', '5'], self.title)
         print("| train accuracy:", self.train_acc*100, "%",
               "| train f1 score:", self.train_f1)
         print("| test accuracy:", self.test_acc * 100, "%",
@@ -80,16 +81,18 @@ if __name__ == "__main__":
     train_set1, test_set1 = DataTrain1[:, :-2], DataTest1[:, :-2]
     feature_train1, label_train1 = train_set1[:, :-1], train_set1[:, -1]
     feature_test1, label_test1 = test_set1[:, :-1], test_set1[:, -1]
-    mission1 = xgbset(feature_train1, label_train1, feature_test1, label_test1, title="Mission_1")
+    mission1 = xgbset(feature_train1, label_train1, feature_test1, label_test1, title="Mission_1_XGB")
     mission1.model_selection()
     mission1.test()
+    print("\n\n")
 
     ## Mission 2 for G3
     feature_train2, label_train2 = feature_train1, DataTrain1[:, -1]
     feature_test2, label_test2 = feature_test1, DataTest1[:, -1]
-    mission2 = xgbset(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2")
+    mission2 = xgbset(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2_XGB")
     mission2.model_selection()
     mission2.test()
+    print("\n\n")
 
     ## Mission 3 for G3
     DataTrain3 = pd.read_csv("../student_performance_train.csv")
@@ -102,6 +105,7 @@ if __name__ == "__main__":
     # transfer = StandardScaler()
     # feature_train3 = transfer.fit_transform(feature_train3)
     # feature_test3 = transfer.transform(feature_test3)
-    mission3 = xgbset(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3")
+    mission3 = xgbset(feature_train3, label_train3, feature_test3, label_test3, title="Mission_3_XGB")
     mission3.model_selection()
     mission3.test()
+    print("\n\n")
