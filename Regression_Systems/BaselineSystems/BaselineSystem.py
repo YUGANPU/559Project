@@ -14,8 +14,8 @@ from sklearn.metrics import r2_score
 
 
 if __name__ == "__main__":
-    DataTrain = pd.read_csv("../student_performance_train.csv")
-    DataTest = pd.read_csv("../student_performance_test.csv")
+    DataTrain = pd.read_csv("../../student_performance_train.csv")
+    DataTest = pd.read_csv("../../student_performance_test.csv")
 
     DataTrain = Data_Process.process(DataTrain, onehot=False)
     DataTest = Data_Process.process(DataTest, onehot=False)
