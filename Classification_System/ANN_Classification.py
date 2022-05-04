@@ -123,7 +123,6 @@ def model_selection(features, labels, title):
 
 
 
-
 if __name__ == "__main__":
     ## Mission 1 for G1
     print("====> Mission 1 ANN:\n")
@@ -138,8 +137,9 @@ if __name__ == "__main__":
     transfer = StandardScaler()
     feature_train1 = transfer.fit_transform(feature_train1)
     feature_test1 = transfer.transform(feature_test1)
-    best_lr1 = model_selection(feature_train1, label_train1, "Mission_1")
-    mission1 = ANN_classifier(feature_train1, label_train1, feature_test1, label_test1, batch_size=200, lr=best_lr1, epoch=5000, title="Misssion_1_ANN")
+    best_lr1 = model_selection(feature_train1, label_train1, "Mission_1_ANN1layer")
+    mission1 = ANN_classifier(feature_train1, label_train1, feature_test1, label_test1,
+                              batch_size=200, lr=best_lr1, epoch=5000, title="Misssion_1_ANN1layer")
     mission1.fit()
     print("\n\n")
 
@@ -150,8 +150,9 @@ if __name__ == "__main__":
     transfer = StandardScaler()
     feature_train2 = transfer.fit_transform(feature_train2)
     feature_test2 = transfer.transform(feature_test2)
-    best_lr2 = model_selection(feature_train2, label_train2, "Mission_2")
-    mission2 = ANN_classifier(feature_train2, label_train2, feature_test2, label_test2, batch_size=200, lr=best_lr2, epoch=5000, title="Mission_2_ANN")
+    best_lr2 = model_selection(feature_train2, label_train2, "Mission_2_ANN1layer")
+    mission2 = ANN_classifier(feature_train2, label_train2, feature_test2, label_test2,
+                              batch_size=200, lr=best_lr2, epoch=5000, title="Mission_2_ANN1layer")
     mission2.fit()
     print("\n\n")
 
@@ -167,7 +168,8 @@ if __name__ == "__main__":
     transfer = StandardScaler()
     feature_train3 = transfer.fit_transform(feature_train3)
     feature_test3 = transfer.transform(feature_test3)
-    best_lr3 = model_selection(feature_train3, label_train3, "Mission_3")
-    mission3 = ANN_classifier(feature_train3, label_train3, feature_test3, label_test3, batch_size=200, lr=best_lr3, epoch=5000, title="Mission_3_ANN")
+    best_lr3 = model_selection(feature_train3, label_train3, "Mission_3_ANN1layer")
+    mission3 = ANN_classifier(feature_train3, label_train3, feature_test3, label_test3,
+                              batch_size=200, lr=best_lr3, epoch=5000, title="Mission_3_ANN1layer")
     mission3.fit()
     print("\n\n")

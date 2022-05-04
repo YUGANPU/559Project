@@ -3,6 +3,7 @@ import pandas as pd
 import Data_Process
 from collections import Counter
 from random import random
+from sklearn.metrics import f1_score
 
 class Baseline:
     def __init__(self, x_train, y_train, x_test, y_test, title="Misssion_1"):
@@ -36,7 +37,8 @@ class Baseline:
             self.predict[i] = int(pred_label)
         acc = (self.predict == self.y_test)
         correct = np.count_nonzero(acc)
-        print(self.title, ": \n| Accuracy for Nearest Mean is", (correct/self.y_test.shape[0])*100, "%")
+        print(self.title, ": \n| Accuracy for Nearest Mean is", (correct/self.y_test.shape[0])*100, "%",
+              " | f1-macro for Nearest Mean is", f1_score(self.y_test, self.predict, average='macro'))
         Data_Process.confusionMatrix(self.y_test, self.predict,['1', '2', '3', '4', '5'], self.title)
         return self.predict
 

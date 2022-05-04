@@ -24,10 +24,7 @@ class xgbset():
         parameters = {
             'max_depth': [6, 10, 15],
             'learning_rate': [0.01, 0.02, 0.1, 0.15],
-            #'n_estimators': [100, 500, 1000],
-            #'min_child_weight': [0, 2, 5, 10]
             'subsample': [0.6, 0.8, 0.85, 0.95]
-            #'colsample_bytree': [0.6, 0.7, 0.8, 0.9, 1.0]
         }
         clf = xgb.XGBClassifier(n_jobs=-1,
                                 objective='multi:softprob',
@@ -46,6 +43,7 @@ class xgbset():
 
     def test(self):
         print("=========>Training Start<=========")
+        ## initial parameters thanks to EE569 HW6
         clf = xgb.XGBClassifier(n_jobs=-1,
                                 objective='multi:softprob',
                                 # tree_method='gpu_hist', gpu_id=None,
@@ -81,6 +79,7 @@ if __name__ == "__main__":
     train_set1, test_set1 = DataTrain1[:, :-2], DataTest1[:, :-2]
     feature_train1, label_train1 = train_set1[:, :-1], train_set1[:, -1]
     feature_test1, label_test1 = test_set1[:, :-1], test_set1[:, -1]
+    #feature_train1, feature_test1 = Data_Process.featuresReduction(feature_train1, feature_test1)
     mission1 = xgbset(feature_train1, label_train1, feature_test1, label_test1, title="Mission_1_XGB")
     mission1.model_selection()
     mission1.test()
@@ -89,6 +88,7 @@ if __name__ == "__main__":
     ## Mission 2 for G3
     feature_train2, label_train2 = feature_train1, DataTrain1[:, -1]
     feature_test2, label_test2 = feature_test1, DataTest1[:, -1]
+    #feature_train2, feature_test2 = Data_Process.featuresReduction(feature_train2, feature_test2)
     mission2 = xgbset(feature_train2, label_train2, feature_test2, label_test2, title="Mission_2_XGB")
     mission2.model_selection()
     mission2.test()
@@ -102,6 +102,7 @@ if __name__ == "__main__":
     DataTrain3, DataTest3 = DataTrain3.values, DataTest3.values
     feature_train3, label_train3 = DataTrain3[:, :-1], DataTrain3[:, -1]
     feature_test3, label_test3 = DataTest3[:, :-1], DataTest3[:, -1]
+    #feature_train3, feature_test3 = Data_Process.featuresReduction(feature_train3, feature_test3)
     # transfer = StandardScaler()
     # feature_train3 = transfer.fit_transform(feature_train3)
     # feature_test3 = transfer.transform(feature_test3)

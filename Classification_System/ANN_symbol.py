@@ -34,7 +34,7 @@ class ANNet(nn.Module):
         self.out_features = out_features
         self.in_features = in_features
         self.fc1 = nn.Linear(in_features, 5)
-        #self.fc2 = nn.Linear(in_features, 5)
+        #self.fc2 = nn.Linear(in_features//2, 5)
         #self.fc3 = nn.Linear(30, 5)
 
     def forward(self, inputs):
