@@ -76,14 +76,14 @@ if __name__ == "__main__":
     tmp = np.array([0,1,2,3,4,5,6,9,10,
                     11,12,15,18,19,
                     22,23,24,25,26,27,28,29,30,
-                    31,32,33,34,36,37,38,
-                    41])
+                    31,32,33,34,35,36,37,38,39,40,
+                    41,42])
 
-    tmp2 = np.array([0, 1, 2, 3, 4, 5, 6, 9, 10,
-                    11, 12, 15, 18, 19,
-                    22, 23, 24, 25, 26, 27, 28, 29, 30,
-                    31, 32, 33, 34, 36, 37, 38,
-                    41, 42, 43, 44])
+    tmp2 = np.array([0,1,2,3,4,5,6,9,10,
+                    11,12,15,18,19,
+                    22,23,24,25,26,27,28,29,30,
+                    31,32,33,34,35,36,37,38,39,40,
+                    41,42,43,44])
 
     TrainSet_feature1, TrainSet_labels1 = TrainSet[:, tmp], TrainSet[:, -3]
     TestSet_feature1, TestSet_labels1 = TestSet[:, tmp], TestSet[:, -3]
@@ -117,4 +117,33 @@ if __name__ == "__main__":
     mission3.model_selection()
     mission3.test()
 
-
+    # TrainSet_feature1, TrainSet_labels1 = TrainSet[:, :-3], TrainSet[:, -3]
+    # TestSet_feature1, TestSet_labels1 = TestSet[:, :-3], TestSet[:, -3]
+    # transfer = StandardScaler()
+    # TrainSet_feature1 = transfer.fit_transform(TrainSet_feature1)
+    # TestSet_feature1 = transfer.fit_transform(TestSet_feature1)
+    #
+    # mission1 = knnset(TrainSet_feature1, TrainSet_labels1, TestSet_feature1, TestSet_labels1, title="Mission_1")
+    # mission1.model_selection()
+    # mission1.test()
+    #
+    # ############
+    # TrainSet_feature2, TrainSet_labels2 = TrainSet[:, :-3], TrainSet[:, -1]
+    # TestSet_feature2, TestSet_labels2 = TestSet[:, :-3], TestSet[:, -1]
+    # TrainSet_feature2 = transfer.fit_transform(TrainSet_feature2)
+    # TestSet_feature2 = transfer.fit_transform(TestSet_feature2)
+    #
+    # mission2 = knnset(TrainSet_feature2, TrainSet_labels2, TestSet_feature2, TestSet_labels2, title="Mission_2")
+    # mission2.model_selection()
+    # mission2.test()
+    #
+    # ##############
+    # TrainSet_feature3, TrainSet_labels3 = TrainSet[:, :-1], TrainSet[:, -1]
+    # TestSet_feature3, TestSet_labels3 = TestSet[:, :-1], TestSet[:, -1]
+    #
+    # TrainSet_feature3 = transfer.fit_transform(TrainSet_feature3)
+    # TestSet_feature3 = transfer.fit_transform(TestSet_feature3)
+    #
+    # mission3 = knnset(TrainSet_feature3, TrainSet_labels3, TestSet_feature3, TestSet_labels3, title="Mission_3")
+    # mission3.model_selection()
+    # mission3.test()

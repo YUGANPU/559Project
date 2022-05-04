@@ -91,5 +91,6 @@ if __name__ == "__main__":
     DataTrain = pd.read_csv("./student_performance_train.csv")
     DataTest = pd.read_csv("./student_performance_test.csv")
     result = process(DataTrain)
+    array = result.values
     print(result.values)
     print(0)

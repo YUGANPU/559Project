@@ -75,6 +75,18 @@ if __name__ == "__main__":
     TrainSet = DataTrain.values
     TestSet = DataTest.values
 
+    # tmp = np.array([0, 1, 2, 3, 4, 5, 6, 9, 10,
+    #                 11, 12, 15, 18, 19,
+    #                 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    #                 31, 32, 33, 34, 36, 37, 38,
+    #                 41])
+    #
+    # tmp2 = np.array([0, 1, 2, 3, 4, 5, 6, 9, 10,
+    #                  11, 12, 15, 18, 19,
+    #                  22, 23, 24, 25, 26, 27, 28, 29, 30,
+    #                  31, 32, 33, 34, 36, 37, 38,
+    #                  41, 42, 43, 44])
+
     TrainSet_feature1, TrainSet_labels1 = TrainSet[:, :-3], TrainSet[:, -3]
     TestSet_feature1, TestSet_labels1 = TestSet[:, :-3], TestSet[:, -3]
     transfer = StandardScaler()
