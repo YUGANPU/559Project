@@ -1,8 +1,10 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import ConfusionMatrixDisplay
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 # Logistic:
 # school: MS:0, GP:1
@@ -82,9 +84,23 @@ def process(data, onehot=True, labels=False):
 
 def confusionMatrix(ture_label, pred_label, classes, title):
     cm = confusion_matrix(ture_label, pred_label)
+    cm = cm.astype('float')
+    row_sum = np.sum(cm, axis=1)
+    for i in range(5):
+        cm[i][:] = cm[i][:]/row_sum[i]
     cm_plot = ConfusionMatrixDisplay(cm, display_labels=classes).plot()
     plt.title(title)
     plt.show()
+
+def featuresReduction(train_feature, test_feature):
+    pca = PCA(n_components='mle')
+    pca.fit(train_feature)
+    train_mle = pca.transform(train_feature)
+    # calculate mean of test_features
+    dc_test = np.mean(test_feature, axis=0, keepdims=False)
+    temp = test_feature - dc_test
+    test_mle = np.dot(temp, pca.components_.T)
+    return train_mle, test_mle
 
 
 if __name__ == "__main__":
